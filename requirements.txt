@@ -1,0 +1,5 @@
+pytest==8.1.1
+pytest-html==4.1.1
+pytest-metadata==3.1.1
+selene==2.0.0rc9
+pillow==10.2.0
