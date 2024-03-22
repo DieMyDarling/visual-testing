@@ -2,7 +2,7 @@ import pytest
 
 from screenshots_processing import image_comparer
 
-basic_urls = ['/login']
+basic_urls = ['/']
 
 
 class TestLayouts(object):

@@ -36,13 +36,13 @@ def pytest_runtest_makereport(item, call):
 
 
 @pytest.fixture(scope="function", autouse=True)
-def driver():
+def browser_driver():
     chrome_options = Options()
     chrome_options.add_argument("--disable-extensions")
     driver = browser.driver
     logger.info("browser version: %s" % browser.driver.capabilities['browserVersion'])
 
-    yield driver
+    yield browser_driver
     driver.delete_all_cookies()
     driver.quit()
     logger.info('close driver now')
@@ -66,7 +66,7 @@ def screenshots_cache(request):
     return request.config.screenshots_cache
 
 
-def _gather_screenshot(item, driver, extra):
+def _gather_screenshot(item, browser_driver, extra):
     request = getattr(item, '_request', None)
     pytest_html = item.config.pluginmanager.getplugin('html')
     diff = item.config.screenshots_cache['diff'].decode()
